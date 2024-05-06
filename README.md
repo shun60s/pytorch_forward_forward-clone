@@ -11,6 +11,6 @@ See the original pytorch_forward_forward README-pytorch_forward_forward.md.
 
 ## License  
 
-Regarding to original pytorch_forward_forward license, please see LICENSE_pytorch_forward_forward. 
+Regarding to original pytorch_forward_forward license, please see LICENSE_pytorch_forward_forward.   
 MIT  
 
