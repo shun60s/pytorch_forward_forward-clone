@@ -62,11 +62,11 @@ def overlay_y_on_x(x, y):
 
 class Net(torch.nn.Module):
 
-    def __init__(self, dims, epochs, threshold ):
+    def __init__(self, dims, epochs, threshold, device ):
         super().__init__()
         self.layers = []
         for d in range(len(dims) - 1):
-            self.layers += [Layer(dims[d], dims[d + 1], epochs, threshold)]  #.cuda()]  # change
+            self.layers += [Layer(dims[d], dims[d + 1], epochs, threshold).to(device)]  # change
 
     def predict(self, x):
         goodness_per_label = []
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument('--no-cuda', action='store_true', default=True, help='disables CUDA training')
     parser.add_argument('--save-model', action='store_true', default=True,
                         help='For Saving the current Model')
-    args = parser.parse_args()
+    args = parser.parse_args()    # or args = parser.parse_args(args=[])
     use_cuda = not args.no_cuda and torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
     """ end of add """
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     train_loader, test_loader = MNIST_loaders(args.train_batch_size, args.test_batch_size) # change
 
     # # input dimension 784 is 28x28, MNIST data size.
-    net = Net([784, 500, 500], args.epochs, args.threshold ).to(device) # change
+    net = Net([784, 500, 500], args.epochs, args.threshold, device ).to(device) # change
     x, y = next(iter(train_loader))
     
     if use_cuda:      # add
