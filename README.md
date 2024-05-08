@@ -11,7 +11,9 @@ See the original pytorch_forward_forward README-pytorch_forward_forward.md.
 
 ![org, pos, neg - samples](./imgs/Figure.png)  
   
-![result, error rate](./imgs/gamen.png)
+![result, error rate](./imgs/gamen.png)  
+
+![error ratio vs epochs](./imgs/error_ratio.png)  
 
 ## License  
 
